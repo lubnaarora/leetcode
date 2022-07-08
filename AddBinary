@@ -1,0 +1,29 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        
+        int a_index = a.length() -1;
+        int b_index = b.length() -1;
+        int carry = 0;
+        string result;
+        
+        while(a_index >=0 || b_index>=0 || carry){
+            
+            if(a_index >= 0){
+                carry += a[a_index] - '0'; //conversion to int
+                a_index--;
+            }
+            
+            if(b_index >= 0){
+                carry += b[b_index] - '0';
+                b_index--;
+            }
+            
+            result += (carry%2 + '0'); //conversion to string
+            carry = carry/2;
+        }
+        
+        reverse(result.begin(),result.end());
+        return result;
+    }
+};
