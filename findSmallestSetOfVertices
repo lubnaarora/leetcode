@@ -1,0 +1,23 @@
+class Solution {
+    public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
+        
+        // store incoming edge for each vertex
+        boolean[] incoming_edge_exist = new boolean[n];
+        for(List<Integer> edge: edges)
+            incoming_edge_exist[edge.get(1)] = true;
+
+
+        List<Integer> solution = new ArrayList();
+
+        //If no incoming edge found, add the vertex
+        // in solution list
+        for(int i=0;i<n;i++){
+            if(!incoming_edge_exist[i])
+                solution.add(i);
+        }
+
+        return solution;
+    }
+
+
+}
